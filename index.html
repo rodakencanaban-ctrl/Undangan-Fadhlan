@@ -1216,6 +1216,20 @@ body.invitation-open .music-control {
 
 </main>
 
+<audio id="bgMusic" loop preload="auto">
+  <source src="assets/background-music.mp3" type="audio/mpeg">
+</audio>
+
+<button
+  id="musicControl"
+  class="music-control"
+  type="button"
+  aria-label="Jeda musik"
+  title="Play / Pause Musik"
+>
+  <span class="music-icon" aria-hidden="true"></span>
+</button>
+
 <script>
 (() => {
   const body = document.body;
@@ -1498,20 +1512,6 @@ body.invitation-open .music-control {
 
 })();
 </script>
-
-<audio id="bgMusic" loop preload="auto">
-  <source src="assets/background-music.mp3" type="audio/mpeg">
-</audio>
-
-<button
-  id="musicControl"
-  class="music-control"
-  type="button"
-  aria-label="Jeda musik"
-  title="Play / Pause Musik"
->
-  <span class="music-icon" aria-hidden="true"></span>
-</button>
 
 </body>
 </html>
