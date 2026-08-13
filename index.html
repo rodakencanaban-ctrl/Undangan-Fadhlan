@@ -1,0 +1,1517 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#005b43">
+<meta name="description" content="Undangan Walimatul Khitan Awaluddin Fadhlan Fathurrahman">
+<title>Walimatul Khitan Fadhlan</title>
+
+<style>
+:root {
+  --cream:#f5ead8;
+  --green:#005b43;
+  --gold:#ffd53d;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; background:var(--cream); }
+body {
+  margin:0; min-width:320px; overflow-x:hidden;
+  background:#e9ddc7; color:var(--green);
+  font-family:Arial,Helvetica,sans-serif;
+}
+button { font:inherit; }
+.sr-only {
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
+/* ================= SHARED 9:16 CANVAS ================= */
+.page {
+  min-height:100svh; display:grid; place-items:center; overflow:hidden;
+}
+.stage {
+  position:relative;
+  width:min(100vw, calc(100svh * 9 / 16));
+  max-height:100svh;
+  aspect-ratio:9/16;
+  overflow:hidden; isolation:isolate;
+  background:var(--cream);
+  box-shadow:0 10px 42px rgba(0,60,43,.14);
+}
+.bg {
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:fill;z-index:1;pointer-events:none;user-select:none;
+}
+.asset {
+  position:absolute;pointer-events:none;
+  will-change:transform,opacity,filter;
+}
+.asset img {
+  width:100%;height:100%;display:block;object-fit:contain;
+  user-select:none;-webkit-user-drag:none;
+}
+.reveal-bg { opacity:0; transform:scale(1.02); }
+.in-view .reveal-bg { animation:sectionBgIn .95s ease .05s forwards; }
+@keyframes sectionBgIn { to{opacity:1;transform:scale(1)} }
+
+/* ================= COMMON LAMP MOTION ================= */
+.section-lamp-l,.section-lamp-r {
+  z-index:3;opacity:0;transform-origin:50% 0%;
+}
+.in-view .section-lamp-l {
+  animation:lampLIn .88s cubic-bezier(.16,.8,.22,1) .22s forwards,
+            swingL 5.1s ease-in-out 1.18s infinite;
+}
+.in-view .section-lamp-r {
+  animation:lampRIn .9s cubic-bezier(.16,.8,.22,1) .30s forwards,
+            swingR 5.55s ease-in-out 1.28s infinite;
+}
+@keyframes lampLIn {
+  from{opacity:0;transform:translateY(-24px) rotate(-3deg) scale(.96);filter:blur(1px)}
+  to{opacity:1;transform:translateY(0) rotate(-1.4deg) scale(1);filter:blur(0)}
+}
+@keyframes lampRIn {
+  from{opacity:0;transform:translateY(-24px) rotate(3deg) scale(.96);filter:blur(1px)}
+  to{opacity:1;transform:translateY(0) rotate(1.35deg) scale(1);filter:blur(0)}
+}
+@keyframes swingL {0%,100%{transform:rotate(-1.4deg)}50%{transform:rotate(1.6deg)}}
+@keyframes swingR {0%,100%{transform:rotate(1.35deg)}50%{transform:rotate(-1.55deg)}}
+
+/* ================= COVER ================= */
+.cover {
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;
+  overflow:hidden;background:var(--cream);
+  transition:transform .88s cubic-bezier(.22,.75,.18,1),opacity .62s ease,visibility .88s;
+}
+.cover::before {
+  content:"";position:absolute;inset:-44px;
+  background:url("assets/cover_bg.png") center/cover no-repeat;
+  filter:blur(26px);transform:scale(1.12);opacity:.65;
+}
+.cover.opened {
+  transform:translateY(-102%);opacity:0;visibility:hidden;pointer-events:none;
+}
+.cover .bg {opacity:0;transform:scale(1.025)}
+body.ready .cover .bg {animation:coverBgIn 1.1s ease .05s forwards}
+@keyframes coverBgIn {to{opacity:1;transform:scale(1)}}
+
+.cover-lamp-l { left:4.722222%;top:0.000000%;width:13.703704%;height:28.489583%; z-index:3;opacity:0;transform-origin:50% 0%; }
+.cover-lamp-r { left:81.481481%;top:0.000000%;width:13.518519%;height:28.020833%; z-index:3;opacity:0;transform-origin:50% 0%; }
+body.ready .cover-lamp-l {
+  animation:lampLIn .9s cubic-bezier(.16,.8,.22,1) .34s forwards,
+            swingL 5.1s ease-in-out 1.30s infinite;
+}
+body.ready .cover-lamp-r {
+  animation:lampRIn .92s cubic-bezier(.16,.8,.22,1) .42s forwards,
+            swingR 5.55s ease-in-out 1.38s infinite;
+}
+.cover-child {
+  left:32.500000%;top:38.020833%;width:32.222222%;height:25.156250%; z-index:4;opacity:0;
+  transform:translateY(22px) scale(.92);transform-origin:50% 100%;
+}
+body.ready .cover-child {
+  animation:childIn 1.05s cubic-bezier(.16,.8,.25,1) .72s forwards,
+            floatChild 5.4s ease-in-out 1.95s infinite;
+}
+@keyframes childIn {
+  0%{opacity:0;transform:translateY(22px) scale(.92);filter:blur(2px)}
+  72%{opacity:1;transform:translateY(-2px) scale(1.008);filter:blur(0)}
+  100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}
+}
+@keyframes floatChild {
+  0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}
+}
+.cover-name-time {
+  left:24.537037%;top:59.895833%;width:47.500000%;height:21.822917%; z-index:6;opacity:0;transform:translateY(16px) scale(.975);
+}
+body.ready .cover-name-time {animation:uiIn .82s cubic-bezier(.2,.8,.2,1) 1.18s forwards}
+@keyframes uiIn {to{opacity:1;transform:translateY(0) scale(1)}}
+.cover-button {
+  left:27.314815%;top:81.250000%;width:42.777778%;height:6.093750%; z-index:7;opacity:0;transform:translateY(12px) scale(.9);
+}
+body.ready .cover-button {
+  animation:buttonIn .72s cubic-bezier(.2,.85,.22,1.25) 1.52s forwards,
+            buttonBreath 2.6s ease-in-out 2.35s infinite;
+}
+@keyframes buttonIn {
+  75%{opacity:1;transform:translateY(-1px) scale(1.025)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes buttonBreath {
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(255,215,79,0))}
+  50%{transform:scale(1.018);filter:drop-shadow(0 0 9px rgba(255,215,79,.34))}
+}
+.open-hotspot {
+  position:absolute;z-index:10;left:27.314815%;top:81.250000%;width:42.777778%;height:6.093750%;
+  border:0;background:transparent;padding:0;border-radius:999px;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
+  opacity:0;pointer-events:none;
+}
+body.ready .open-hotspot {animation:hotspotOn .01s linear 1.95s forwards}
+@keyframes hotspotOn {to{opacity:1;pointer-events:auto}}
+
+/* ================= CONTENT ================= */
+#content {opacity:0;transition:opacity .5s ease .12s}
+#content.visible {opacity:1}
+
+/* ================= PEMBUKAAN ================= */
+.opening-lamp-l { left:4.722222%;top:0.000000%;width:13.703704%;height:28.489583%; }
+.opening-lamp-r { left:81.481481%;top:0.000000%;width:13.518519%;height:28.020833%; }
+.opening-text {
+  left:1.111111%;top:28.489583%;width:95.833333%;height:37.500000%;z-index:4;opacity:0;transform:translateY(18px) scale(.985);
+}
+.in-view .opening-text {animation:textIn .95s cubic-bezier(.18,.8,.22,1) .60s forwards}
+@keyframes textIn {to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.opening-flower {
+  left:5.648148%;top:67.031250%;width:89.444444%;height:32.968750%;z-index:5;opacity:0;transform-origin:50% 72%;
+  transform:translateY(28px) scale(.94) rotate(-2deg);
+}
+.in-view .opening-flower {
+  animation:flowerIn .9s cubic-bezier(.18,.8,.22,1) .98s forwards,
+            flowerRock 22s ease-in-out 1.95s infinite;
+}
+@keyframes flowerIn {to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes flowerRock {
+  0%,100%{transform:rotate(-2deg) scale(1)}50%{transform:rotate(2deg) scale(1.005)}
+}
+.opening-footer {
+  left:0.000000%;top:92.187500%;width:100.000000%;height:7.812500%;z-index:6;opacity:0;transform:translateY(10px);
+}
+.in-view .opening-footer {animation:footerIn .7s ease 1.20s forwards}
+@keyframes footerIn {to{opacity:1;transform:translateY(0)}}
+
+/* ================= PROFIL ================= */
+.profile-lamp-l { left:4.722222%;top:0.000000%;width:13.703704%;height:28.489583%; }
+.profile-lamp-r { left:81.481481%;top:0.000000%;width:13.518519%;height:28.020833%; }
+.profile-child {
+  left:26.296296%;top:12.083333%;width:48.796296%;height:38.125000%;z-index:4;opacity:0;
+  transform:translateY(24px) scale(.94);transform-origin:50% 100%;
+}
+.in-view .profile-child {
+  animation:childIn 1.05s cubic-bezier(.16,.8,.25,1) .58s forwards,
+            floatChild 5.6s ease-in-out 1.90s infinite;
+}
+.profile-name {
+  left:2.407407%;top:45.156250%;width:91.944444%;height:19.322917%;z-index:6;opacity:0;transform:translateY(18px) scale(.97);
+}
+.in-view .profile-name {animation:profileNameIn .85s cubic-bezier(.2,.85,.22,1.12) .9s forwards}
+@keyframes profileNameIn {
+  75%{opacity:1;transform:translateY(-1px) scale(1.015)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+.profile-flower {
+  left:27.314815%;top:86.979167%;width:46.203704%;height:13.020833%;z-index:5;opacity:0;transform-origin:50% 100%;
+  transform:translateY(22px) scale(.94) rotate(-2deg);
+}
+.in-view .profile-flower {
+  animation:profileFlowerIn .9s cubic-bezier(.18,.8,.22,1) 1.15s forwards,
+            flowerRock 24s ease-in-out 2.10s infinite;
+}
+@keyframes profileFlowerIn {to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+
+/* ================= COUNTDOWN ================= */
+.count-lamp-l { left:4.722222%;top:0.000000%;width:13.703704%;height:28.489583%; }
+.count-lamp-r { left:81.481481%;top:0.000000%;width:13.518519%;height:28.020833%; }
+.count-title {
+  left:13.518519%;top:18.906250%;width:70.833333%;height:13.958333%;z-index:4;opacity:0;transform:translateY(18px) scale(.97);
+}
+.in-view .count-title {
+  animation:countTitleIn .82s cubic-bezier(.2,.85,.22,1.1) .52s forwards;
+}
+@keyframes countTitleIn {
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.count-panel {
+  left:10.000000%;top:35.052083%;width:77.592593%;height:48.020833%;z-index:5;opacity:0;transform:translateY(24px) scale(.97);
+}
+.in-view .count-panel {
+  animation:countPanelIn .9s cubic-bezier(.18,.8,.22,1) .78s forwards;
+}
+@keyframes countPanelIn {
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+
+/* LIVE HTML NUMBERS over the Canva panel */
+.count-number {
+  position:absolute;z-index:8;
+  transform:translate(-50%,-50%);
+  min-width:22%;
+  text-align:center;
+  color:#ffd53d;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(44px,11.5vw,72px);
+  line-height:1;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.03em;
+  text-shadow:
+    0 2px 0 rgba(77,54,0,.25),
+    0 5px 12px rgba(0,0,0,.22);
+  opacity:0;
+}
+.in-view .count-number {
+  opacity:1;
+  animation:numberIn .6s cubic-bezier(.2,.9,.2,1.15) .92s both;
+}
+@keyframes numberIn {
+  from{opacity:0;transform:translate(-50%,-50%) scale(.72)}
+  to{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+.count-number.tick {
+  opacity:1;
+  animation:numberTick .28s ease;
+}
+@keyframes numberTick {
+  0%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  45%{opacity:1;transform:translate(-50%,-50%) scale(1.10)}
+  100%{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+#days    {left:27.175926%;top:43.750000%}
+#hours   {left:70.416667%;top:43.750000%}
+#minutes {left:27.175926%;top:69.218750%}
+#seconds {left:70.416667%;top:69.218750%}
+
+.count-footer {
+  left:0.370370%;top:86.614583%;width:99.259259%;height:13.333333%;z-index:6;opacity:0;transform:translateY(14px);
+}
+.in-view .count-footer {animation:footerIn .7s ease 1.18s forwards}
+.count-flower {
+  left:17.870370%;top:87.864583%;width:61.574074%;height:12.135417%;z-index:7;opacity:0;transform-origin:50% 100%;
+  transform:translateY(24px) scale(.94) rotate(-2deg);
+}
+.in-view .count-flower {
+  animation:countFlowerIn .9s cubic-bezier(.18,.8,.22,1) 1.25s forwards,
+            flowerRock 24s ease-in-out 2.20s infinite;
+}
+@keyframes countFlowerIn {
+  to{opacity:1;transform:translateY(0) scale(1) rotate(0)}
+}
+.count-finished {
+  position:absolute;z-index:9;left:50%;top:48%;
+  width:74%;transform:translate(-50%,-50%) scale(.9);
+  padding:16px 20px;border-radius:18px;
+  background:rgba(0,82,59,.94);border:2px solid #d6b33d;
+  color:#ffe274;text-align:center;
+  font-family:Georgia,serif;font-size:clamp(22px,6vw,34px);
+  opacity:0;pointer-events:none;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+.count-finished.show {
+  animation:finishedIn .6s cubic-bezier(.2,.9,.2,1.1) forwards;
+}
+@keyframes finishedIn {to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+
+/* NEXT */
+.next-hint {
+  position:absolute;z-index:12;left:50%;
+  bottom:max(8px,env(safe-area-inset-bottom));
+  transform:translateX(-50%);
+  width:48px;height:38px;border:0;background:transparent;
+  color:rgba(255,255,255,.76);font-size:24px;cursor:pointer;opacity:0;
+}
+.in-view .next-hint {
+  animation:hintIn .4s ease 1.55s forwards,hintBounce 1.7s ease-in-out 2s infinite;
+}
+@keyframes hintIn {to{opacity:1}}
+@keyframes hintBounce {
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(5px)}
+}
+
+.next-placeholder {
+  min-height:100svh;display:grid;place-items:center;padding:32px;
+  text-align:center;background:#f5ead8;color:#07563f;
+}
+.next-placeholder small {letter-spacing:.16em;color:#ad8525}
+.next-placeholder h2 {font-family:Georgia,serif;font-size:36px;font-weight:500;margin:8px 0}
+.next-placeholder p {color:#5d756d;line-height:1.7}
+
+
+/* ================= DETAIL ACARA ================= */
+.detail-lamp-l { left:4.722222%;top:0.000000%;width:13.703704%;height:28.489583%; }
+.detail-lamp-r { left:81.481481%;top:0.000000%;width:13.518519%;height:28.020833%; }
+
+.detail-text {
+  left:7.592593%;top:19.322917%;width:88.518519%;height:60.208333%;
+  z-index:4;
+  opacity:0;
+  transform:translateY(20px) scale(.985);
+}
+
+.in-view .detail-text {
+  animation:detailTextIn .95s cubic-bezier(.18,.8,.22,1) .58s forwards;
+}
+
+@keyframes detailTextIn {
+  from {
+    opacity:0;
+    transform:translateY(20px) scale(.985);
+    filter:blur(1.5px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+  }
+}
+
+.detail-footer {
+  left:0.370370%;top:86.614583%;width:99.259259%;height:13.333333%;
+  z-index:6;
+  opacity:0;
+  transform:translateY(14px);
+}
+
+.in-view .detail-footer {
+  animation:footerIn .72s ease 1.15s forwards;
+}
+
+.detail-flower {
+  left:17.870370%;top:87.864583%;width:61.574074%;height:12.135417%;
+  z-index:7;
+  opacity:0;
+  transform-origin:50% 100%;
+  transform:translateY(26px) scale(.94) rotate(-2deg);
+}
+
+.in-view .detail-flower {
+  animation:
+    detailFlowerIn .9s cubic-bezier(.18,.8,.22,1) 1.22s forwards,
+    detailFlowerRock 24s ease-in-out 2.15s infinite;
+}
+
+@keyframes detailFlowerIn {
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes detailFlowerRock {
+  0%,100% {
+    transform:rotate(-2deg) scale(1);
+  }
+  50% {
+    transform:rotate(2deg) scale(1.006);
+  }
+}
+
+
+/* ================= FOOTER PEMBATAS BAWAH ================= */
+.bottom-separator {
+  left:0.000000%;top:98.229167%;width:100.000000%;height:1.770833%;
+  z-index:11;
+  opacity:0;
+  transform:translateY(5px);
+}
+
+.in-view .bottom-separator {
+  animation:separatorIn .55s ease 1.38s forwards;
+}
+
+@keyframes separatorIn {
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* ================= LOKASI ================= */
+.location-lamp-l {
+  left:4.722222%;top:0.000000%;width:13.703704%;height:28.489583%;
+}
+
+.location-lamp-r {
+  left:81.481481%;top:0.000000%;width:13.518519%;height:28.020833%;
+}
+
+.location-title {
+  left:13.703704%;top:20.677083%;width:71.111111%;height:3.697917%;
+  z-index:4;
+  opacity:0;
+  transform:translateY(18px) scale(.97);
+}
+
+.in-view .location-title {
+  animation:locationTitleIn .82s cubic-bezier(.2,.85,.22,1.1) .52s forwards;
+}
+
+@keyframes locationTitleIn {
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.location-button {
+  left:3.240741%;top:67.343750%;width:94.351852%;height:6.875000%;
+  z-index:7;
+  opacity:0;
+  transform:translateY(14px) scale(.94);
+}
+
+.in-view .location-button {
+  animation:
+    locationButtonIn .72s cubic-bezier(.2,.88,.22,1.16) .82s forwards,
+    locationButtonBreath 2.7s ease-in-out 1.75s infinite;
+}
+
+@keyframes locationButtonIn {
+  75% {
+    opacity:1;
+    transform:translateY(-1px) scale(1.018);
+  }
+  100% {
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes locationButtonBreath {
+  0%,100% {
+    transform:scale(1);
+    filter:drop-shadow(0 0 0 rgba(255,215,79,0));
+  }
+  50% {
+    transform:scale(1.014);
+    filter:drop-shadow(0 0 10px rgba(255,215,79,.36));
+  }
+}
+
+/* Link transparan di atas tombol Canva */
+.location-link {
+  position:absolute;
+  left:3.240741%;top:67.343750%;width:94.351852%;height:6.875000%;
+  z-index:12;
+  border-radius:999px;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  opacity:0;
+  pointer-events:none;
+}
+
+.in-view .location-link {
+  animation:locationLinkEnable .01s linear 1.18s forwards;
+}
+
+@keyframes locationLinkEnable {
+  to {
+    opacity:1;
+    pointer-events:auto;
+  }
+}
+
+.location-link:focus-visible {
+  outline:3px solid #ffe084;
+  outline-offset:3px;
+}
+
+.location-footer {
+  left:0.370370%;top:86.614583%;width:99.259259%;height:13.333333%;
+  z-index:6;
+  opacity:0;
+  transform:translateY(14px);
+}
+
+.in-view .location-footer {
+  animation:footerIn .72s ease 1.08s forwards;
+}
+
+.location-flower {
+  left:17.870370%;top:87.864583%;width:61.574074%;height:12.135417%;
+  z-index:7;
+  opacity:0;
+  transform-origin:50% 100%;
+  transform:translateY(24px) scale(.94) rotate(-2deg);
+}
+
+.in-view .location-flower {
+  animation:
+    locationFlowerIn .9s cubic-bezier(.18,.8,.22,1) 1.18s forwards,
+    locationFlowerRock 24s ease-in-out 2.08s infinite;
+}
+
+@keyframes locationFlowerIn {
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1) rotate(0);
+  }
+}
+
+@keyframes locationFlowerRock {
+  0%,100% {
+    transform:rotate(-2deg) scale(1);
+  }
+  50% {
+    transform:rotate(2deg) scale(1.006);
+  }
+}
+
+
+/* ================= RSVP ================= */
+.rsvp-page {
+  min-height:100svh;
+  background:#086c3d;
+}
+.rsvp-stage {margin:0 auto;}
+.rsvp-lamp-l { left:4.722222%;top:0.000000%;width:13.703704%;height:28.489583%; }
+.rsvp-lamp-r { left:81.481481%;top:0.000000%;width:13.518519%;height:28.020833%; }
+
+.rsvp-title {
+  left:21.666667%;top:4.635417%;width:56.851852%;height:8.958333%;z-index:4;opacity:0;transform:translateY(18px) scale(.97);
+}
+.in-view .rsvp-title {animation:rsvpTitleIn .82s cubic-bezier(.2,.85,.22,1.1) .5s forwards;}
+@keyframes rsvpTitleIn {to{opacity:1;transform:translateY(0) scale(1)}}
+
+.rsvp-form-visual {
+  left:15.277778%;top:26.354167%;width:71.296296%;height:49.895833%;z-index:4;opacity:0;transform:translateY(22px) scale(.985);
+}
+.in-view .rsvp-form-visual {animation:rsvpFormIn .9s cubic-bezier(.18,.8,.22,1) .68s forwards;}
+@keyframes rsvpFormIn {to{opacity:1;transform:translateY(0) scale(1)}}
+
+.rsvp-control {
+  position:absolute;z-index:8;border:0;outline:none;background:transparent;
+  color:#075d42;font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(14px,3.6vw,20px);padding:0 14px;opacity:0;
+}
+.in-view .rsvp-control {animation:rsvpControlIn .45s ease 1.05s forwards;}
+@keyframes rsvpControlIn {to{opacity:1}}
+
+#rsvpName {
+  left:22.037037%;top:33.541667%;
+  width:55.833333%;height:4.062500%;
+}
+#rsvpAttendance {
+  left:23.425926%;top:46.145833%;
+  width:51.759259%;height:3.750000%;
+  cursor:pointer;
+}
+#rsvpMessage {
+  left:18.611111%;top:61.875000%;
+  width:55.370370%;height:12.552083%;
+  padding:12px 14px;resize:none;line-height:1.45;
+}
+.rsvp-control::placeholder {color:rgba(7,93,66,.48);}
+
+.rsvp-button {
+  left:16.018519%;top:78.229167%;width:68.703704%;height:5.052083%;z-index:7;opacity:0;transform:translateY(12px) scale(.93);
+}
+.in-view .rsvp-button {
+  animation:rsvpButtonIn .7s cubic-bezier(.2,.88,.22,1.16) 1.18s forwards,
+            rsvpButtonBreath 2.7s ease-in-out 2.1s infinite;
+}
+@keyframes rsvpButtonIn {
+  75%{opacity:1;transform:translateY(-1px) scale(1.018)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes rsvpButtonBreath {
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 rgba(255,215,79,0))}
+  50%{transform:scale(1.012);filter:drop-shadow(0 0 10px rgba(255,215,79,.32))}
+}
+
+.rsvp-submit {
+  position:absolute;left:16.018519%;top:78.229167%;width:68.703704%;height:5.052083%;z-index:12;border:0;background:transparent;
+  border-radius:999px;cursor:pointer;opacity:0;pointer-events:none;
+  -webkit-tap-highlight-color:transparent;
+}
+.in-view .rsvp-submit {animation:rsvpSubmitEnable .01s linear 1.48s forwards;}
+@keyframes rsvpSubmitEnable {to{opacity:1;pointer-events:auto}}
+.rsvp-submit:focus-visible {outline:3px solid #ffe083;outline-offset:3px;}
+
+.rsvp-footer {
+  left:0.370370%;top:86.614583%;width:99.259259%;height:13.333333%;z-index:6;opacity:0;transform:translateY(14px);
+}
+.in-view .rsvp-footer {animation:footerIn .72s ease 1.28s forwards;}
+
+.rsvp-flower {
+  left:17.870370%;top:87.864583%;width:61.574074%;height:12.135417%;z-index:7;opacity:0;transform-origin:50% 100%;
+  transform:translateY(24px) scale(.94) rotate(-2deg);
+}
+.in-view .rsvp-flower {
+  animation:rsvpFlowerIn .9s cubic-bezier(.18,.8,.22,1) 1.36s forwards,
+            rsvpFlowerRock 24s ease-in-out 2.25s infinite;
+}
+@keyframes rsvpFlowerIn {to{opacity:1;transform:translateY(0) scale(1) rotate(0)}}
+@keyframes rsvpFlowerRock {
+  0%,100%{transform:rotate(-2deg) scale(1)}50%{transform:rotate(2deg) scale(1.006)}
+}
+
+.rsvp-separator {
+  left:0.000000%;top:98.229167%;width:100.000000%;height:1.770833%;z-index:11;opacity:0;transform:translateY(4px);
+}
+.in-view .rsvp-separator {animation:separatorIn .55s ease 1.5s forwards;}
+
+.rsvp-feed {
+  width:min(100vw, calc(100svh * 9 / 16));margin:0 auto;
+  padding:28px 18px 42px;
+  background:linear-gradient(rgba(0,102,57,.96),rgba(0,102,57,.96));
+  color:#fff4d4;
+}
+.rsvp-feed-title {
+  margin:0 0 18px;text-align:center;font-family:Georgia,"Times New Roman",serif;
+  color:#f5cf6d;font-size:clamp(24px,6vw,32px);
+}
+.rsvp-feed-summary {
+  display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px;
+}
+.rsvp-chip {
+  padding:7px 12px;border:1px solid rgba(245,207,109,.65);border-radius:999px;
+  font-size:12px;background:rgba(0,65,45,.35);
+}
+.rsvp-list {display:grid;gap:12px;}
+.rsvp-card {
+  padding:14px 16px;border:1px solid rgba(245,207,109,.45);border-radius:16px;
+  background:rgba(255,249,235,.96);color:#075d42;box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+.rsvp-card-head {display:flex;justify-content:space-between;gap:10px;align-items:center;}
+.rsvp-card-name {font-weight:700;font-size:15px;}
+.rsvp-status {
+  font-size:11px;font-weight:700;border-radius:999px;padding:5px 9px;white-space:nowrap;
+}
+.rsvp-status.hadir {color:#075d42;background:#dff3e8;}
+.rsvp-status.tidak {color:#7f321f;background:#fae3dc;}
+.rsvp-card-message {
+  margin:9px 0 0;font-size:13px;line-height:1.5;color:#456b5d;white-space:pre-wrap;
+}
+.rsvp-empty {text-align:center;padding:24px 12px;color:rgba(255,244,212,.72);font-size:13px;}
+
+.rsvp-feedback {
+  position:fixed;left:50%;bottom:22px;z-index:300;
+  transform:translateX(-50%) translateY(24px);width:min(86vw,380px);
+  padding:12px 16px;border-radius:999px;background:#064c37;color:#ffe28a;
+  border:1px solid rgba(255,226,138,.7);text-align:center;font-size:13px;
+  opacity:0;pointer-events:none;transition:.3s ease;
+}
+.rsvp-feedback.show {opacity:1;transform:translateX(-50%) translateY(0);}
+
+
+/* ================= PENUTUP / FINAL PAGE ================= */
+.closing-page {
+  min-height:100svh;
+  background:#f5ead8;
+}
+
+.closing-lamp-l {
+  left:4.722222%;top:0.000000%;width:13.703704%;height:28.489583%;
+}
+
+.closing-lamp-r {
+  left:81.481481%;top:0.000000%;width:13.518519%;height:28.020833%;
+}
+
+.closing-text {
+  left:9.166667%;top:18.854167%;width:85.092593%;height:58.854167%;
+  z-index:4;
+  opacity:0;
+  transform:translateY(20px) scale(.985);
+}
+
+.in-view .closing-text {
+  animation:closingTextIn .95s cubic-bezier(.18,.8,.22,1) .56s forwards;
+}
+
+@keyframes closingTextIn {
+  from {
+    opacity:0;
+    transform:translateY(20px) scale(.985);
+    filter:blur(1.5px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+  }
+}
+
+.closing-child {
+  left:25.648148%;top:27.500000%;width:50.833333%;height:17.083333%;
+  z-index:5;
+  opacity:0;
+  transform:translateY(18px) scale(.92);
+  transform-origin:50% 100%;
+}
+
+.in-view .closing-child {
+  animation:
+    closingChildIn .92s cubic-bezier(.16,.8,.25,1) .78s forwards,
+    closingChildFloat 5.8s ease-in-out 1.9s infinite;
+}
+
+@keyframes closingChildIn {
+  0% {
+    opacity:0;
+    transform:translateY(18px) scale(.92);
+    filter:blur(2px);
+  }
+  72% {
+    opacity:1;
+    transform:translateY(-2px) scale(1.008);
+    filter:blur(0);
+  }
+  100% {
+    opacity:1;
+    transform:translateY(0) scale(1);
+    filter:blur(0);
+  }
+}
+
+@keyframes closingChildFloat {
+  0%,100% { transform:translateY(0) scale(1); }
+  50% { transform:translateY(-3px) scale(1.004); }
+}
+
+.closing-button {
+  left:31.851852%;top:80.156250%;width:39.629630%;height:2.864583%;
+  z-index:8;
+  opacity:0;
+  transform:translateY(12px) scale(.94);
+}
+
+.in-view .closing-button {
+  animation:
+    closingButtonIn .7s cubic-bezier(.2,.88,.22,1.16) 1.14s forwards,
+    closingButtonBreath 2.8s ease-in-out 2.05s infinite;
+}
+
+@keyframes closingButtonIn {
+  75% {
+    opacity:1;
+    transform:translateY(-1px) scale(1.018);
+  }
+  100% {
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes closingButtonBreath {
+  0%,100% {
+    transform:scale(1);
+    filter:drop-shadow(0 0 0 rgba(255,215,79,0));
+  }
+  50% {
+    transform:scale(1.014);
+    filter:drop-shadow(0 0 10px rgba(255,215,79,.34));
+  }
+}
+
+.back-to-top {
+  position:absolute;
+  left:31.851852%;top:80.156250%;width:39.629630%;height:2.864583%;
+  z-index:14;
+  border:0;
+  padding:0;
+  background:transparent;
+  border-radius:999px;
+  cursor:pointer;
+  opacity:0;
+  pointer-events:none;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.in-view .back-to-top {
+  animation:backTopEnable .01s linear 1.46s forwards;
+}
+
+@keyframes backTopEnable {
+  to {
+    opacity:1;
+    pointer-events:auto;
+  }
+}
+
+.back-to-top:focus-visible {
+  outline:3px solid #ffe083;
+  outline-offset:3px;
+}
+
+.closing-footer {
+  left:0.000000%;top:74.427083%;width:100.000000%;height:25.572917%;
+  z-index:6;
+  opacity:0;
+  transform:translateY(16px);
+}
+
+.in-view .closing-footer {
+  animation:closingFooterIn .75s ease 1.2s forwards;
+}
+
+@keyframes closingFooterIn {
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.closing-flower {
+  left:19.629630%;top:83.906250%;width:61.574074%;height:16.093750%;
+  z-index:7;
+  opacity:0;
+  transform-origin:50% 100%;
+  transform:translateY(24px) scale(.94) rotate(-2deg);
+}
+
+.in-view .closing-flower {
+  animation:
+    closingFlowerIn .92s cubic-bezier(.18,.8,.22,1) 1.28s forwards,
+    closingFlowerRock 25s ease-in-out 2.18s infinite;
+}
+
+@keyframes closingFlowerIn {
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1) rotate(0deg);
+  }
+}
+
+@keyframes closingFlowerRock {
+  0%,100% {
+    transform:rotate(-2deg) scale(1);
+  }
+  50% {
+    transform:rotate(2deg) scale(1.006);
+  }
+}
+
+.closing-separator {
+  left:0.000000%;top:98.229167%;width:100.000000%;height:1.770833%;
+  z-index:11;
+  opacity:0;
+  transform:translateY(4px);
+}
+
+.in-view .closing-separator {
+  animation:separatorIn .55s ease 1.5s forwards;
+}
+
+/* DEBUG */
+body.debug .asset {outline:1px dashed rgba(255,0,180,.42)}
+body.debug .count-number {outline:1px dashed #00a8ff}
+body.debug .open-hotspot {background:rgba(255,0,0,.16);outline:2px dashed red}
+
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.001ms!important;
+    scroll-behavior:auto!important;
+  }
+  .asset,.bg,.count-number,.open-hotspot {
+    opacity:1!important;transform:none!important;filter:none!important;
+  }
+  .count-number {transform:translate(-50%,-50%)!important}
+  .open-hotspot {pointer-events:auto!important}
+}
+
+/* ================= BACKGROUND MUSIC ================= */
+.music-control {
+  position: fixed;
+  right: 16px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 250;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid rgba(242,214,125,.88);
+  border-radius: 50%;
+  background: rgba(0,91,67,.94);
+  color: #f2d67d;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(0,0,0,.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px) scale(.92);
+  transition: opacity .3s ease, transform .3s ease, background .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body.invitation-open .music-control {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.music-control:hover {
+  background: rgba(0,72,52,.98);
+}
+
+.music-control:focus-visible {
+  outline: 3px solid #ffe083;
+  outline-offset: 3px;
+}
+
+.music-icon {
+  font-size: 21px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.music-control.paused .music-icon::before {
+  content: "▶";
+}
+
+.music-control:not(.paused) .music-icon::before {
+  content: "❚❚";
+  font-size: 16px;
+  letter-spacing: -2px;
+}
+
+@media (max-width: 480px) {
+  .music-control {
+    width: 44px;
+    height: 44px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- COVER -->
+<section id="cover" class="cover">
+  <div class="stage">
+    <img class="bg" src="assets/cover_bg.png" alt="">
+    <div class="asset cover-lamp-l"><img src="assets/cover_lamp_l.png" alt=""></div>
+    <div class="asset cover-lamp-r"><img src="assets/cover_lamp_r.png" alt=""></div>
+    <div class="asset cover-child"><img src="assets/cover_child.png" alt="Fadhlan"></div>
+    <div class="asset cover-name-time"><img src="assets/cover_name_time.png" alt=""></div>
+    <div class="asset cover-button"><img src="assets/cover_button.png" alt=""></div>
+    <button id="openBtn" class="open-hotspot" aria-label="Buka undangan">
+      <span class="sr-only">Buka undangan</span>
+    </button>
+  </div>
+</section>
+
+<main id="content" aria-hidden="true">
+
+  <!-- PEMBUKAAN -->
+  <section id="pembukaan" class="page observed-page">
+    <div class="stage">
+      <img class="bg reveal-bg" src="assets/opening_bg.png" alt="">
+      <div class="asset section-lamp-l opening-lamp-l"><img src="assets/opening_lamp_l.png" alt=""></div>
+      <div class="asset section-lamp-r opening-lamp-r"><img src="assets/opening_lamp_r.png" alt=""></div>
+      <div class="asset opening-text"><img src="assets/opening_text.png" alt="Teks pembukaan"></div>
+      <div class="asset opening-flower"><img src="assets/opening_flower.png" alt=""></div>
+      <div class="asset opening-footer"><img src="assets/opening_footer.png" alt=""></div>
+      <button class="next-hint" data-scroll="profil" aria-label="Lanjut ke profil">⌄</button>
+    </div>
+  </section>
+
+  <!-- PROFIL -->
+  <section id="profil" class="page observed-page">
+    <div class="stage">
+      <img class="bg reveal-bg" src="assets/profile_bg.png" alt="">
+      <div class="asset section-lamp-l profile-lamp-l"><img src="assets/profile_lamp_l.png" alt=""></div>
+      <div class="asset section-lamp-r profile-lamp-r"><img src="assets/profile_lamp_r.png" alt=""></div>
+      <div class="asset profile-child"><img src="assets/profile_child.png" alt="Awaluddin Fadhlan Fathurrahman"></div>
+      <div class="asset profile-name"><img src="assets/profile_name.png" alt="Awaluddin Fadhlan Fathurrahman"></div>
+      <div class="asset profile-flower"><img src="assets/profile_flower.png" alt=""></div>
+      <div class="asset bottom-separator"><img src="assets/bottom_separator.png" alt=""></div>
+      <button class="next-hint" data-scroll="countdown" aria-label="Lanjut ke countdown">⌄</button>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section id="countdown" class="page observed-page">
+    <div class="stage">
+      <img class="bg reveal-bg" src="assets/count_bg.png" alt="">
+      <div class="asset section-lamp-l count-lamp-l"><img src="assets/count_lamp_l.png" alt=""></div>
+      <div class="asset section-lamp-r count-lamp-r"><img src="assets/count_lamp_r.png" alt=""></div>
+      <div class="asset count-title"><img src="assets/count_title.png" alt="Menuju Hari Bahagia"></div>
+      <div class="asset count-panel"><img src="assets/count_panel.png" alt=""></div>
+
+      <!-- Angka countdown asli HTML/JavaScript -->
+      <div id="days" class="count-number" aria-label="Hari">00</div>
+      <div id="hours" class="count-number" aria-label="Jam">00</div>
+      <div id="minutes" class="count-number" aria-label="Menit">00</div>
+      <div id="seconds" class="count-number" aria-label="Detik">00</div>
+
+      <div class="asset count-footer"><img src="assets/count_footer.png" alt=""></div>
+      <div class="asset count-flower"><img src="assets/count_flower.png" alt=""></div>
+      <div class="asset bottom-separator"><img src="assets/bottom_separator.png" alt=""></div>
+
+      <div id="countFinished" class="count-finished">Hari Bahagia Telah Tiba</div>
+
+      <button class="next-hint" data-scroll="detail-acara" aria-label="Lanjut ke detail acara">⌄</button>
+    </div>
+  </section>
+
+  <!-- DETAIL ACARA -->
+  <section id="detail-acara" class="page observed-page">
+    <div class="stage">
+      <img class="bg reveal-bg" src="assets/detail_bg.png" alt="">
+
+      <div class="asset section-lamp-l detail-lamp-l">
+        <img src="assets/detail_lamp_l.png" alt="">
+      </div>
+
+      <div class="asset section-lamp-r detail-lamp-r">
+        <img src="assets/detail_lamp_r.png" alt="">
+      </div>
+
+      <div class="asset detail-text">
+        <img
+          src="assets/detail_text.png"
+          alt="Khitanan, Minggu 30 Agustus 2026, pukul 10.00 WIB sampai selesai, Jalan Terusan Cimuncang Pasirleutik RT02 RW13 Gang Bapak Wiria"
+        >
+      </div>
+
+      <div class="asset detail-footer">
+        <img src="assets/detail_footer.png" alt="">
+      </div>
+
+      <div class="asset detail-flower">
+        <img src="assets/detail_flower.png" alt="">
+      </div>
+
+      <div class="asset bottom-separator">
+        <img src="assets/bottom_separator.png" alt="">
+      </div>
+
+      <button class="next-hint" data-scroll="lokasi" aria-label="Lanjut ke lokasi">⌄</button>
+    </div>
+  </section>
+
+  <!-- LOKASI -->
+  <section id="lokasi" class="page observed-page">
+    <div class="stage">
+      <img class="bg reveal-bg" src="assets/location_bg.png" alt="">
+
+      <div class="asset section-lamp-l location-lamp-l">
+        <img src="assets/location_lamp_l.png" alt="">
+      </div>
+
+      <div class="asset section-lamp-r location-lamp-r">
+        <img src="assets/location_lamp_r.png" alt="">
+      </div>
+
+      <div class="asset location-title">
+        <img src="assets/location_title.png" alt="Lokasi Acara">
+      </div>
+
+      <div class="asset location-button">
+        <img src="assets/location_button.png" alt="Lihat Lokasi">
+      </div>
+
+      <a
+        class="location-link"
+        href="https://maps.app.goo.gl/Kc5zDCmvxVjoSpUw5"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Buka lokasi acara di Google Maps"
+      ></a>
+
+      <div class="asset location-footer">
+        <img src="assets/location_footer.png" alt="">
+      </div>
+
+      <div class="asset location-flower">
+        <img src="assets/location_flower.png" alt="">
+      </div>
+
+      <div class="asset bottom-separator">
+        <img src="assets/bottom_separator.png" alt="">
+      </div>
+
+      <button class="next-hint" data-scroll="rsvp" aria-label="Lanjut ke RSVP">⌄</button>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="rsvp-page observed-page">
+    <div class="stage rsvp-stage">
+      <img class="bg reveal-bg" src="assets/rsvp_bg.png" alt="">
+      <div class="asset section-lamp-l rsvp-lamp-l"><img src="assets/rsvp_lamp_l.png" alt=""></div>
+      <div class="asset section-lamp-r rsvp-lamp-r"><img src="assets/rsvp_lamp_r.png" alt=""></div>
+      <div class="asset rsvp-title"><img src="assets/rsvp_title.png" alt="Konfirmasi Kehadiran"></div>
+      <div class="asset rsvp-form-visual"><img src="assets/rsvp_form_box.png" alt=""></div>
+
+      <input id="rsvpName" class="rsvp-control" type="text" maxlength="60"
+             autocomplete="name" placeholder="Tulis nama..." aria-label="Nama tamu">
+
+      <select id="rsvpAttendance" class="rsvp-control" aria-label="Kehadiran">
+        <option value="">Pilih kehadiran</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Tidak Hadir">Tidak Hadir</option>
+      </select>
+
+      <textarea id="rsvpMessage" class="rsvp-control" maxlength="300"
+                placeholder="Tuliskan pesan dan doa..." aria-label="Pesan"></textarea>
+
+      <div class="asset rsvp-button"><img src="assets/rsvp_button.png" alt="Konfirmasi"></div>
+      <button id="rsvpSubmit" class="rsvp-submit" type="button"
+              aria-label="Kirim konfirmasi kehadiran"></button>
+
+      <div class="asset rsvp-footer"><img src="assets/rsvp_footer.png" alt=""></div>
+      <div class="asset rsvp-flower"><img src="assets/rsvp_flower.png" alt=""></div>
+      <div class="asset rsvp-separator"><img src="assets/rsvp_separator.png" alt=""></div>
+    </div>
+
+    <div id="rsvpFeed" class="rsvp-feed">
+      <h2 class="rsvp-feed-title">Konfirmasi Tamu</h2>
+      <div class="rsvp-feed-summary">
+        <span id="rsvpTotal" class="rsvp-chip">0 Konfirmasi</span>
+        <span id="rsvpPresent" class="rsvp-chip">0 Hadir</span>
+        <span id="rsvpAbsent" class="rsvp-chip">0 Tidak Hadir</span>
+      </div>
+      <div id="rsvpList" class="rsvp-list"></div>
+    </div>
+  </section>
+
+  <!-- PENUTUP / HALAMAN TERAKHIR -->
+  <section id="penutup" class="page closing-page observed-page">
+    <div class="stage">
+      <img class="bg reveal-bg" src="assets/closing_bg.png" alt="">
+
+      <div class="asset section-lamp-l closing-lamp-l">
+        <img src="assets/closing_lamp_l.png" alt="">
+      </div>
+
+      <div class="asset section-lamp-r closing-lamp-r">
+        <img src="assets/closing_lamp_r.png" alt="">
+      </div>
+
+      <div class="asset closing-text">
+        <img
+          src="assets/closing_text.png"
+          alt="Terima kasih. Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak Ibu Saudara berkenan hadir dan memberikan doa restu untuk ananda Fadhlan."
+        >
+      </div>
+
+      <div class="asset closing-child">
+        <img src="assets/closing_child.png" alt="Awaluddin Fadhlan Fathurrahman">
+      </div>
+
+      <div class="asset closing-button">
+        <img src="assets/closing_button.png" alt="Kembali ke atas">
+      </div>
+
+      <button
+        id="backToTop"
+        class="back-to-top"
+        type="button"
+        aria-label="Kembali ke halaman cover"
+      ></button>
+
+      <div class="asset closing-footer">
+        <img src="assets/closing_footer.png" alt="">
+      </div>
+
+      <div class="asset closing-flower">
+        <img src="assets/closing_flower.png" alt="">
+      </div>
+
+      <div class="asset closing-separator">
+        <img src="assets/closing_separator.png" alt="">
+      </div>
+    </div>
+  </section>
+
+  <div id="rsvpFeedback" class="rsvp-feedback" role="status" aria-live="polite"></div>
+
+</main>
+
+<script>
+(() => {
+  const body = document.body;
+  const cover = document.getElementById('cover');
+  const openBtn = document.getElementById('openBtn');
+  const content = document.getElementById('content');
+  const bgMusic = document.getElementById('bgMusic');
+  const musicControl = document.getElementById('musicControl');
+
+  bgMusic.volume = 0.30;
+
+  async function startBackgroundMusic() {
+    try {
+      await bgMusic.play();
+      musicControl.classList.remove('paused');
+      musicControl.setAttribute('aria-label', 'Jeda musik');
+    } catch (err) {
+      musicControl.classList.add('paused');
+      musicControl.setAttribute('aria-label', 'Putar musik');
+    }
+  }
+
+  if (new URLSearchParams(location.search).get('debug') === '1') {
+    body.classList.add('debug');
+  }
+
+  body.style.overflow='hidden';
+
+  window.addEventListener('load', () => {
+    requestAnimationFrame(() => body.classList.add('ready'));
+  });
+
+  openBtn.addEventListener('click', () => {
+    if (cover.classList.contains('opened')) return;
+    cover.classList.add('opened');
+    content.classList.add('visible');
+    content.setAttribute('aria-hidden','false');
+    body.style.overflow='auto';
+    body.classList.add('invitation-open');
+
+    startBackgroundMusic();
+
+    setTimeout(() => {
+      document.getElementById('pembukaan')
+        .scrollIntoView({behavior:'smooth',block:'start'});
+    },220);
+  });
+
+  // Entrance per page saat benar-benar masuk viewport
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+
+        if (entry.target.id === 'countdown') {
+          setTimeout(updateCountdown, 50);
+        }
+      }
+    });
+  },{threshold:.32});
+
+  document.querySelectorAll('.observed-page').forEach(p => observer.observe(p));
+
+  document.querySelectorAll('[data-scroll]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target=document.getElementById(btn.dataset.scroll);
+      if(target) target.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  });
+
+  musicControl.addEventListener('click', async () => {
+    if (bgMusic.paused) {
+      await startBackgroundMusic();
+    } else {
+      bgMusic.pause();
+      musicControl.classList.add('paused');
+      musicControl.setAttribute('aria-label', 'Putar musik');
+    }
+  });
+
+  bgMusic.addEventListener('play', () => {
+    musicControl.classList.remove('paused');
+    musicControl.setAttribute('aria-label', 'Jeda musik');
+  });
+
+  bgMusic.addEventListener('pause', () => {
+    musicControl.classList.add('paused');
+    musicControl.setAttribute('aria-label', 'Putar musik');
+  });
+
+  /* =======================================================
+     COUNTDOWN
+     Target: Minggu, 30 Agustus 2026 pukul 10:00 WIB (UTC+7)
+     ======================================================= */
+  const targetTime = new Date('2026-08-30T10:00:00+07:00').getTime();
+
+  const els = {
+    days: document.getElementById('days'),
+    hours: document.getElementById('hours'),
+    minutes: document.getElementById('minutes'),
+    seconds: document.getElementById('seconds')
+  };
+  const finished = document.getElementById('countFinished');
+
+  function pad(n) {
+    return String(Math.max(0,n)).padStart(2,'0');
+  }
+
+  function setValue(el,value) {
+    if (el.textContent !== value) {
+      el.textContent=value;
+
+      const countdownPage = document.getElementById('countdown');
+      if (countdownPage.classList.contains('in-view')) {
+        el.classList.remove('tick');
+        void el.offsetWidth;
+        el.classList.add('tick');
+      }
+    }
+  }
+
+  function updateCountdown() {
+    const now=Date.now();
+    let distance=targetTime-now;
+
+    if(distance<=0) {
+      distance=0;
+      finished.classList.add('show');
+    }
+
+    const dayMs=1000*60*60*24;
+    const hourMs=1000*60*60;
+    const minuteMs=1000*60;
+
+    const days=Math.floor(distance/dayMs);
+    const hours=Math.floor((distance%dayMs)/hourMs);
+    const minutes=Math.floor((distance%hourMs)/minuteMs);
+    const seconds=Math.floor((distance%minuteMs)/1000);
+
+    setValue(els.days,pad(days));
+    setValue(els.hours,pad(hours));
+    setValue(els.minutes,pad(minutes));
+    setValue(els.seconds,pad(seconds));
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown,1000);
+
+  /* RSVP prototype — penyimpanan lokal browser */
+  const RSVP_STORAGE_KEY = 'fadhlan_rsvp_v1';
+
+  const rsvpName = document.getElementById('rsvpName');
+  const rsvpAttendance = document.getElementById('rsvpAttendance');
+  const rsvpMessage = document.getElementById('rsvpMessage');
+  const rsvpSubmit = document.getElementById('rsvpSubmit');
+  const rsvpList = document.getElementById('rsvpList');
+  const rsvpTotal = document.getElementById('rsvpTotal');
+  const rsvpPresent = document.getElementById('rsvpPresent');
+  const rsvpAbsent = document.getElementById('rsvpAbsent');
+  const rsvpFeedback = document.getElementById('rsvpFeedback');
+
+  function loadRsvp() {
+    try {
+      const raw = localStorage.getItem(RSVP_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveRsvp(entries) {
+    localStorage.setItem(RSVP_STORAGE_KEY, JSON.stringify(entries));
+  }
+
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  function renderRsvp() {
+    const entries = loadRsvp();
+    const hadir = entries.filter(item => item.attendance === 'Hadir').length;
+    const tidak = entries.filter(item => item.attendance === 'Tidak Hadir').length;
+
+    rsvpTotal.textContent = `${entries.length} Konfirmasi`;
+    rsvpPresent.textContent = `${hadir} Hadir`;
+    rsvpAbsent.textContent = `${tidak} Tidak Hadir`;
+
+    if (!entries.length) {
+      rsvpList.innerHTML = '<div class="rsvp-empty">Belum ada konfirmasi tamu.</div>';
+      return;
+    }
+
+    rsvpList.innerHTML = entries.slice().reverse().map(item => {
+      const statusClass = item.attendance === 'Hadir' ? 'hadir' : 'tidak';
+      const message = item.message
+        ? `<p class="rsvp-card-message">${escapeHtml(item.message)}</p>`
+        : '';
+
+      return `
+        <article class="rsvp-card">
+          <div class="rsvp-card-head">
+            <span class="rsvp-card-name">${escapeHtml(item.name)}</span>
+            <span class="rsvp-status ${statusClass}">${escapeHtml(item.attendance)}</span>
+          </div>
+          ${message}
+        </article>`;
+    }).join('');
+  }
+
+  function showRsvpFeedback(message) {
+    rsvpFeedback.textContent = message;
+    rsvpFeedback.classList.add('show');
+    setTimeout(() => rsvpFeedback.classList.remove('show'), 2200);
+  }
+
+  rsvpSubmit.addEventListener('click', () => {
+    const name = rsvpName.value.trim();
+    const attendance = rsvpAttendance.value;
+    const message = rsvpMessage.value.trim();
+
+    if (!name) {
+      showRsvpFeedback('Silakan isi nama tamu.');
+      rsvpName.focus();
+      return;
+    }
+
+    if (!attendance) {
+      showRsvpFeedback('Silakan pilih kehadiran.');
+      rsvpAttendance.focus();
+      return;
+    }
+
+    const entries = loadRsvp();
+    entries.push({
+      name,
+      attendance,
+      message,
+      createdAt: new Date().toISOString()
+    });
+
+    saveRsvp(entries);
+    renderRsvp();
+
+    rsvpName.value = '';
+    rsvpAttendance.value = '';
+    rsvpMessage.value = '';
+
+    showRsvpFeedback('Konfirmasi berhasil disimpan.');
+
+    setTimeout(() => {
+      document.getElementById('rsvpFeed')
+        .scrollIntoView({behavior:'smooth',block:'start'});
+    }, 250);
+  });
+
+  renderRsvp();
+
+  /* PENUTUP — kembali ke cover */
+  const backToTop = document.getElementById('backToTop');
+
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({top:0, left:0, behavior:'smooth'});
+
+    setTimeout(() => {
+      cover.classList.remove('opened');
+      body.style.overflow='hidden';
+      body.classList.remove('invitation-open');
+
+      bgMusic.pause();
+      bgMusic.currentTime = 0;
+      musicControl.classList.add('paused');
+      musicControl.setAttribute('aria-label', 'Putar musik');
+    }, 260);
+  });
+
+})();
+</script>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="assets/background-music.mp3" type="audio/mpeg">
+</audio>
+
+<button
+  id="musicControl"
+  class="music-control"
+  type="button"
+  aria-label="Jeda musik"
+  title="Play / Pause Musik"
+>
+  <span class="music-icon" aria-hidden="true"></span>
+</button>
+
+</body>
+</html>
