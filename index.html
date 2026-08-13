@@ -32,6 +32,7 @@ button { font:inherit; }
 }
 .stage {
   position:relative;
+  container-type:inline-size;
   width:min(100vw, calc(100svh * 9 / 16));
   max-height:100svh;
   aspect-ratio:9/16;
@@ -240,7 +241,7 @@ body.ready .open-hotspot {animation:hotspotOn .01s linear 1.95s forwards}
   text-align:center;
   color:#ffd53d;
   font-family:Georgia,"Times New Roman",serif;
-  font-size:clamp(44px,11.5vw,72px);
+  font-size:clamp(56px,16cqw,86px);
   line-height:1;
   font-weight:700;
   font-variant-numeric:tabular-nums;
@@ -573,7 +574,7 @@ body.ready .open-hotspot {animation:hotspotOn .01s linear 1.95s forwards}
 .rsvp-control {
   position:absolute;z-index:8;border:0;outline:none;background:transparent;
   color:#075d42;font-family:Arial,Helvetica,sans-serif;
-  font-size:clamp(14px,3.6vw,20px);padding:0 14px;opacity:0;
+  font-size:clamp(17px,4.5cqw,23px);font-weight:500;padding:0 10px;opacity:0;
 }
 .in-view .rsvp-control {animation:rsvpControlIn .45s ease 1.05s forwards;}
 @keyframes rsvpControlIn {to{opacity:1}}
@@ -590,7 +591,7 @@ body.ready .open-hotspot {animation:hotspotOn .01s linear 1.95s forwards}
 #rsvpMessage {
   left:18.611111%;top:61.875000%;
   width:55.370370%;height:12.552083%;
-  padding:12px 14px;resize:none;line-height:1.45;
+  padding:10px 12px;resize:none;line-height:1.35;font-size:clamp(17px,4.2cqw,22px);
 }
 .rsvp-control::placeholder {color:rgba(7,93,66,.48);}
 
@@ -902,6 +903,12 @@ body.debug .open-hotspot {background:rgba(255,0,0,.16);outline:2px dashed red}
   }
   .count-number {transform:translate(-50%,-50%)!important}
   .open-hotspot {pointer-events:auto!important}
+}
+
+@supports not (font-size:1cqw) {
+  .count-number { font-size:clamp(58px,16vw,86px); }
+  .rsvp-control { font-size:clamp(17px,4.5vw,23px); }
+  #rsvpMessage { font-size:clamp(17px,4.2vw,22px); }
 }
 
 /* ================= BACKGROUND MUSIC ================= */
