@@ -1,0 +1,47 @@
+name: Fix dynamic typography
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch countdown and RSVP font sizes
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('index.html')
+          t=p.read_text(encoding='utf-8')
+          changed=False
+          old="""  position:relative;\n  width:min(100vw, calc(100svh * 9 / 16));"""
+          new="""  position:relative;\n  container-type:inline-size;\n  width:min(100vw, calc(100svh * 9 / 16));"""
+          if old in t:
+              t=t.replace(old,new,1); changed=True
+          if 'font-size:clamp(44px,11.5vw,72px);' in t:
+              t=t.replace('font-size:clamp(44px,11.5vw,72px);','font-size:clamp(56px,16cqw,86px);',1); changed=True
+          if 'font-size:clamp(14px,3.6vw,20px);padding:0 14px;opacity:0;' in t:
+              t=t.replace('font-size:clamp(14px,3.6vw,20px);padding:0 14px;opacity:0;','font-size:clamp(17px,4.5cqw,23px);font-weight:500;padding:0 10px;opacity:0;',1); changed=True
+          if 'padding:12px 14px;resize:none;line-height:1.45;' in t:
+              t=t.replace('padding:12px 14px;resize:none;line-height:1.45;','padding:10px 12px;resize:none;line-height:1.35;font-size:clamp(17px,4.2cqw,22px);',1); changed=True
+          marker='/* ================= BACKGROUND MUSIC ================= */'
+          fallback='''@supports not (font-size:1cqw) {\n  .count-number { font-size:clamp(58px,16vw,86px); }\n  .rsvp-control { font-size:clamp(17px,4.5vw,23px); }\n  #rsvpMessage { font-size:clamp(17px,4.2vw,22px); }\n}\n\n'''
+          if marker in t and '@supports not (font-size:1cqw)' not in t:
+              t=t.replace(marker,fallback+marker,1); changed=True
+          if changed:
+              p.write_text(t,encoding='utf-8')
+          PY
+      - name: Commit fix
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix countdown and RSVP text sizing"
+          git push
